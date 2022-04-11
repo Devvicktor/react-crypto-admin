@@ -1,16 +1,21 @@
 // algorittm to merge objects by id
 
-const mergeById = (data1, data2) => {
-  console.log("DATA1", data1);
-  console.log("DATA2", data2);
-  const merged = [];
-  data1.forEach((item) => {
-    const match = data2.find((item2) => item2.id === item.id);
+export const mergeById = (data1, data2) => {
+  return data1.reduce((acc, item) => {
+    const match = data2.find((item2) => item2.asset_id === item.asset_id);
     if (match) {
-      merged.push({ ...item, ...match });
+      acc.push({ ...item, ...match });
     }
-  });
-  return merged;
+    return acc;
+  }, []);
 };
 
-export default mergeById;
+export const mergeExchangesById = (data1, data2) => {
+  return data1.reduce((acc, item) => {
+    const match = data2.find((item2) => item2.exchange_id === item.exchange_id);
+    if (match) {
+      acc.push({ ...item, ...match });
+    }
+    return acc;
+  }, []);
+};

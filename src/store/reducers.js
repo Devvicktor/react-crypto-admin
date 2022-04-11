@@ -1,4 +1,4 @@
-import mergeById from "../util/mergeObjects";
+import { mergeById, mergeExchangesById } from "../util/mergeObjects";
 
 const initialState = {
   data: [],
@@ -24,7 +24,7 @@ const AssetsReducer = (state = initialState, action) => {
     case "ADD_EXCHANGES":
       return {
         ...state,
-        exchanges: mergeById(action.data, state.exchangesIcons),
+        exchanges: mergeExchangesById(action.data, state.exchangesIcons),
       };
     case "ADD_ASSETS":
       return {
